@@ -5,4 +5,4 @@ install:
 
 .PHONY: test
 test:
-	pytest
+	pytest tests
