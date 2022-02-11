@@ -7,7 +7,6 @@ env:
 
 jobs:
   tests:
-    needs: prepare
     strategy:
       fail-fast: false
       matrix:
