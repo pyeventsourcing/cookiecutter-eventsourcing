@@ -3,7 +3,7 @@ name = "{{cookiecutter.project_slug}}"
 version = "0.1.dev0"
 description = "Python package for {{cookiecutter.project_slug}}."
 authors = [
-    "cookiecutter.author_fullname <{{cookiecutter.author_email}}>",
+    "{{cookiecutter.author_fullname}} <{{cookiecutter.author_email}}>",
 ]
 license = "BSD 3-Clause"
 classifiers = [
