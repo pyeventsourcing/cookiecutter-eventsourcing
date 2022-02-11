@@ -1,0 +1,8 @@
+{
+    "project_slug": "my_project",
+    "author_fullname": "Author Name",
+    "author_email": "example@example.com",
+    "_copy_without_render": [
+        ".github/workflows/github-actions.yml"
+    ]
+}
