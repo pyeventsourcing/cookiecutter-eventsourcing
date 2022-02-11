@@ -36,7 +36,7 @@ Add dependencies in `pyproject.toml`. Update installed packages.
 
     $ make update-packages
 
-Check the code formatting.
+Check the formatting of your code.
 
     $ make lint
 
@@ -44,4 +44,7 @@ Reformat your code.
 
     $ make fmt
 
-If your push your changes to a GitHub repo, your code will be tested in GitHub Actions.
+If you push your changes to a GitHub repo, your code will be tested in GitHub Actions.
+Edit your GitHub Actions config file(s) according to your project needs.
+
+    $ less .github/workflows/github-actions.yml
