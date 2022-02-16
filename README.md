@@ -24,9 +24,9 @@ Start using your eventsourcing project.
     $ cd your_project
     $ make install
 
-The `make install` command uses `poetry` to create a dedicated Python
-virtual environment for your project, and installs into it the `eventsourcing`
-library and popular development dependencies such as `black`, `isort`, and `pytest`.
+The ``make install`` command uses the build tool Poetry to create a dedicated
+Python virtual environment for your project, and installs popular development
+dependencies such as Black, isort and pytest.
 
 Add tests in `./tests`. Add code in `./your_project`. 
 
