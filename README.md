@@ -19,6 +19,30 @@ Remove the cookiecutter virtual environment.
 
     $ rm -r cookiecutter-venv
 
+You will now have the following files and folders.
+
+    ./your_project
+    ./your_project/.flake8
+    ./your_project/your_project
+    ./your_project/your_project/__init__.py
+    ./your_project/your_project/domainmodel.py
+    ./your_project/your_project/application.py
+    ./your_project/your_project/py.typed
+    ./your_project/pytest.ini
+    ./your_project/LICENSE
+    ./your_project/Makefile
+    ./your_project/pyproject.toml
+    ./your_project/tests
+    ./your_project/tests/__init__.py
+    ./your_project/tests/test_application.py
+    ./your_project/.editorconfig
+    ./your_project/README.md
+    ./your_project/mypy.ini
+    ./your_project/.gitignore
+    ./your_project/.github
+    ./your_project/.github/workflows
+    ./your_project/.github/workflows/github-actions.yml
+
 Start using your eventsourcing project.
 
     $ cd your_project
