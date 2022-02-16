@@ -2,7 +2,7 @@
 from {{cookiecutter.project_slug}}.application import DogSchool
 
 
-def test_application() -> None:
+def test_dog_school() -> None:
     # Construct application object.
     app = DogSchool()
 

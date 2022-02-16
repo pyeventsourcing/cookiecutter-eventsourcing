@@ -24,16 +24,15 @@ Start using your eventsourcing project.
     $ cd your_project
     $ make install
 
-Add tests in `./tests`. Add code in `./your_project`. Run tests.
+The `make install` command uses `poetry` to create a dedicated Python
+virtual environment for your project, and installs into it the `eventsourcing`
+library and popular development dependencies such as `black`, `isort`, and `pytest`.
+
+Add tests in `./tests`. Add code in `./your_project`. 
+
+Run tests.
 
     $ make test
-
-See the [Python eventsourcing project](https://github.com/pyeventsourcing/eventsourcing)
-for more information and guidance about developing event-sourced applications.
-
-Add dependencies in `pyproject.toml`. Update installed packages.
-
-    $ make update-packages
 
 Check the formatting of your code.
 
@@ -43,10 +42,17 @@ Reformat your code.
 
     $ make fmt
 
+Add dependencies in `pyproject.toml` and then update installed packages.
+
+    $ make update-packages
+
 If you push your changes to a GitHub repo, your code will be tested in GitHub Actions.
 Edit your GitHub Actions config file(s) according to your project needs.
 
     $ less .github/workflows/github-actions.yml
 
-Please refer to the relevant documentation for more information about building and distributing
+See the [Python eventsourcing project](https://github.com/pyeventsourcing/eventsourcing)
+for more information and guidance about developing event-sourced applications.
+
+Please refer to the Poetry documentation for more information about building and distributing
 Python packages with the Poetry build tool.
