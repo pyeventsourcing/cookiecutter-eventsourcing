@@ -2,7 +2,6 @@ from contextlib import contextmanager
 import shlex
 import os
 import subprocess
-import datetime
 from cookiecutter.utils import rmtree
 
 
@@ -28,6 +27,11 @@ def bake_in_temp_dir(cookies, *args, **kwargs):
         cookie to be baked and its temporal files will be removed
     """
     result = cookies.bake(*args, **kwargs)
+    if result.exception:
+        raise result.exception
+    assert result.project_path.is_dir(), result
+    assert result.exit_code == 0, result
+
     try:
         yield result
     finally:
@@ -50,13 +54,6 @@ def check_output_inside_dir(command, dirpath):
         return subprocess.check_output(shlex.split(command))
 
 
-# def test_year_compute_in_license_file(cookies):
-#     with bake_in_temp_dir(cookies) as result:
-#         license_file_path = result.project_path.join('LICENSE')
-#         now = datetime.datetime.now()
-#         assert str(now.year) in license_file_path.read()
-#
-
 def project_info(result):
     """Get toplevel dir, project_slug, and project dir from baked cookies"""
     project_path = str(result.project_path)
@@ -67,42 +64,21 @@ def project_info(result):
 
 def test_bake_with_defaults(cookies):
     with bake_in_temp_dir(cookies) as result:
-        assert result.project_path.is_dir()
-        assert result.exit_code == 0
-        assert result.exception is None
 
-        found_toplevel_files = [f.name for f in result.project_path.iterdir()]
-        assert 'my_project' in found_toplevel_files
-        assert 'tests' in found_toplevel_files
-        assert 'pyproject.toml' in found_toplevel_files
-        assert 'pytest.ini' in found_toplevel_files
-        assert 'mypy.ini' in found_toplevel_files
-        assert '.flake8' in found_toplevel_files
-        assert '.editorconfig' in found_toplevel_files
-        assert 'Makefile' in found_toplevel_files
+        assert os.path.exists(result.project_path / result.context['project_slug'])
+        assert os.path.exists(result.project_path / result.context['project_slug'] / '__init__.py')
+        assert os.path.exists(result.project_path / result.context['project_slug'] / 'application.py')
+        assert os.path.exists(result.project_path / result.context['project_slug'] / 'domainmodel.py')
+        assert os.path.exists(result.project_path / 'tests')
+        assert os.path.exists(result.project_path / 'tests' / '__init__.py')
+        assert os.path.exists(result.project_path / 'tests' / 'test_application.py')
+        assert os.path.exists(result.project_path / 'pyproject.toml')
+        assert os.path.exists(result.project_path / 'pytest.ini')
+        assert os.path.exists(result.project_path / 'mypy.ini')
+        assert os.path.exists(result.project_path / '.flake8')
+        assert os.path.exists(result.project_path / '.editorconfig')
+        assert os.path.exists(result.project_path / 'Makefile')
 
         run_inside_dir('make install', str(result.project_path))
         run_inside_dir('make lint', str(result.project_path))
         run_inside_dir('make test', str(result.project_path))
-
-# def test_bake_and_run_tests(cookies):
-#     with bake_in_temp_dir(cookies) as result:
-#         assert result.project_path.isdir()
-#         run_inside_dir('make test', str(result.project_path))
-#
-#         found_toplevel_files = [f.basename for f in result.project_path.listdir()]
-#         assert 'my_project' in found_toplevel_files
-#
-# #
-# def test_bake_withspecialchars_and_run_tests(cookies):
-#     """Ensure that a `full_name` with double quotes does not break setup.py"""
-#     with bake_in_temp_dir(
-#         cookies,
-#         extra_context={
-#             'project_slug': 'the_project',
-#             'author_fullname': 'name "quote" name',
-#             'author_email': 'myemail@mydomain.com'
-#         },
-#     ) as result:
-#         assert result.project_path.isdir()
-#         run_inside_dir('make test', str(result.project_path))
