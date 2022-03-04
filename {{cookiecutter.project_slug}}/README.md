@@ -1,6 +1,6 @@
 [*please edit this file according to the needs of your project*]
 
-# Welcome to {{cookiecutter.project_slug}}
+# Welcome to {{cookiecutter.project_name}}
 
 [*please summarise what your project provides to users*]
 
@@ -14,9 +14,9 @@
 
 ## Developers
 
-After cloning the repository, you can set up a virtual environment and
-install dependencies by running the following command in the root
-folder.
+After cloning the {{cookiecutter.project_slug}} repository, set up a virtual
+environment and install dependencies by running the following command in the
+root folder.
 
     $ make install
 
@@ -24,7 +24,7 @@ The ``make install`` command uses the build tool Poetry to create a dedicated
 Python virtual environment for this project, and installs popular development
 dependencies such as Black, isort and pytest.
 
-Add tests in `./tests`. Add code in `./{{cookiecutter.project_slug}}`.
+Add tests in `./tests`. Add code in `./{{cookiecutter.pkg_name}}`.
 
 Run tests.
 

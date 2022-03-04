@@ -1,8 +1,10 @@
 {
-    "project_slug": "my_project",
-    "author_fullname": "Author Name",
-    "author_email": "example@example.com",
-    "_copy_without_render": [
-        ".github/workflows/github-actions.yml"
-    ]
+  "project_name": "My New Project",
+  "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+  "pkg_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
+  "author_fullname": "Author Name",
+  "author_email": "example@example.com",
+  "_copy_without_render": [
+    ".github/workflows/github-actions.yml"
+  ]
 }

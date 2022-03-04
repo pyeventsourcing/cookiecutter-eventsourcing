@@ -55,7 +55,7 @@ def check_output_inside_dir(command, dirpath):
 
 
 def project_info(result):
-    """Get toplevel dir, project_slug, and project dir from baked cookies"""
+    """Get toplevel dir, project_name, project_slug, pkg_name and project dir from baked cookies"""
     project_path = str(result.project_path)
     project_slug = os.path.split(project_path)[-1]
     project_dir = os.path.join(project_path, project_slug)
@@ -65,10 +65,10 @@ def project_info(result):
 def test_bake_with_defaults(cookies):
     with bake_in_temp_dir(cookies) as result:
 
-        assert os.path.exists(result.project_path / result.context['project_slug'])
-        assert os.path.exists(result.project_path / result.context['project_slug'] / '__init__.py')
-        assert os.path.exists(result.project_path / result.context['project_slug'] / 'application.py')
-        assert os.path.exists(result.project_path / result.context['project_slug'] / 'domainmodel.py')
+        assert os.path.exists(result.project_path / result.context['pkg_name'])
+        assert os.path.exists(result.project_path / result.context['pkg_name'] / '__init__.py')
+        assert os.path.exists(result.project_path / result.context['pkg_name'] / 'application.py')
+        assert os.path.exists(result.project_path / result.context['pkg_name'] / 'domainmodel.py')
         assert os.path.exists(result.project_path / 'tests')
         assert os.path.exists(result.project_path / 'tests' / '__init__.py')
         assert os.path.exists(result.project_path / 'tests' / 'test_application.py')

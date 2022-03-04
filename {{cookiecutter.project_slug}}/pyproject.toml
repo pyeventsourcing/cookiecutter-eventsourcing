@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "{{cookiecutter.project_slug}}"
+name = "{{cookiecutter.pkg_name}}"
 version = "0.1.dev0"
-description = "Python package for {{cookiecutter.project_slug}}."
+description = "{{cookiecutter.project_name}}"
 authors = [
     "{{cookiecutter.author_fullname}} <{{cookiecutter.author_email}}>",
 ]
@@ -16,17 +16,13 @@ classifiers = [
     "Programming Language :: Python",
 ]
 readme = "README.md"
-#homepage = "https://eventsourcing.readthedocs.io/"
-#repository = "https://github.com/pyeventsourcing/{{cookiecutter.project_slug}}"
+#homepage = ""
+#repository = ""
 include = ["{{cookiecutter.project_slug}}/py.typed"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-eventsourcing = { version = "~9.2.0" }
-#eventsourcing = { version = "~9.2.0", extras = ["crypto"] }
-#eventsourcing = { path = "../eventsourcing/", extras = ["crypto"] }
-#eventsourcing = { path = "../eventsourcing/", extras = ["crypto"], develop = true }
-#eventsourcing = { git = "https://github.com/pyeventsourcing/eventsourcing.git", branch = "main", extras = ["crypto"]}
+eventsourcing = { version = "~9.2.3" }
 
 [tool.poetry.dev-dependencies]
 black = { version = "*", allow-prereleases = true }

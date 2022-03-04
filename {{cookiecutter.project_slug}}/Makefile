@@ -99,3 +99,12 @@ fmt: fmt-black fmt-isort
 .PHONY: test
 test:
 	$(POETRY) run python -m pytest -v $(opts) $(call tests,.)
+
+.PHONY: build
+build:
+	$(POETRY) build
+# 	$(POETRY) build -f sdist    # build source distribution only
+
+.PHONY: publish
+publish:
+	$(POETRY) publish

@@ -11,7 +11,9 @@ Install cookiecutter into a dedicated virtual environment.
 Create a new project from the template.
 
     $ ./cookiecutter-venv/bin/cookiecutter gh:pyeventsourcing/cookiecutter-eventsourcing
-    project_slug [my_project]: your_project 
+    project_name [My New Project]: My Project 
+    project_slug [my-project]: 
+    pkg_name [my_project]: myproject 
     author_fullname [Author Name]: Your Name
     author_email [example@example.com]: your@email.address
 
@@ -21,38 +23,38 @@ Remove the cookiecutter virtual environment.
 
 You will now have the following files and folders.
 
-    ./your_project
-    ./your_project/.editorconfig
-    ./your_project/.flake8
-    ./your_project/.github
-    ./your_project/.github/workflows
-    ./your_project/.github/workflows/github-actions.yml
-    ./your_project/.gitignore
-    ./your_project/LICENSE
-    ./your_project/Makefile
-    ./your_project/README.md
-    ./your_project/mypy.ini
-    ./your_project/pyproject.toml
-    ./your_project/pytest.ini
-    ./your_project/tests
-    ./your_project/tests/__init__.py
-    ./your_project/tests/test_application.py
-    ./your_project/your_project
-    ./your_project/your_project/__init__.py
-    ./your_project/your_project/application.py
-    ./your_project/your_project/domainmodel.py
-    ./your_project/your_project/py.typed
+    ./my-project
+    ./my-project/.editorconfig
+    ./my-project/.flake8
+    ./my-project/.github
+    ./my-project/.github/workflows
+    ./my-project/.github/workflows/github-actions.yml
+    ./my-project/.gitignore
+    ./my-project/LICENSE
+    ./my-project/Makefile
+    ./my-project/README.md
+    ./my-project/mypy.ini
+    ./my-project/pyproject.toml
+    ./my-project/pytest.ini
+    ./my-project/tests
+    ./my-project/tests/__init__.py
+    ./my-project/tests/test_application.py
+    ./my-project/myproject
+    ./my-project/myproject/__init__.py
+    ./my-project/myproject/application.py
+    ./my-project/myproject/domainmodel.py
+    ./my-project/myproject/py.typed
 
 Start using your eventsourcing project.
 
-    $ cd your_project
+    $ cd my-project
     $ make install
 
-The ``make install`` command uses the build tool Poetry to create a dedicated
-Python virtual environment for your project, and installs popular development
-dependencies such as Black, isort and pytest.
+The ``make install`` command installs and uses the build tool Poetry to create a
+dedicated  Python virtual environment for your project, and installs popular
+development dependencies such as mypy, Black, isort, and pytest.
 
-Add tests in `./tests`. Add code in `./your_project`. 
+Add tests in `./tests`. Add code in `./myproject`. 
 
 Run tests.
 
@@ -70,8 +72,9 @@ Add dependencies in `pyproject.toml` and then update installed packages.
 
     $ make update-packages
 
-If you push your changes to a GitHub repo, your code will be tested in GitHub Actions.
-Edit your GitHub Actions config file(s) according to your project needs.
+If you push your changes to a GitHub repo, your code will be automatically
+tested in GitHub Actions. View your GitHub Actions config file(s), and
+adjust according to your project's needs.
 
     $ less .github/workflows/github-actions.yml
 

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from {{cookiecutter.project_slug}}.application import DogSchool
+from {{cookiecutter.pkg_name}}.application import DogSchool
 
 
 def test_dog_school() -> None:

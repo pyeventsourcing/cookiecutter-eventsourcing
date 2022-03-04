@@ -4,7 +4,7 @@ from uuid import UUID
 
 from eventsourcing.application import Application
 
-from {{cookiecutter.project_slug}}.domainmodel import Dog
+from {{cookiecutter.pkg_name}}.domainmodel import Dog
 
 
 class DogSchool(Application):
