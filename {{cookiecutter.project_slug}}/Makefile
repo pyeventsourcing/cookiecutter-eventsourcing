@@ -1,18 +1,8 @@
 .EXPORT_ALL_VARIABLES:
 
-COMPOSE_FILE ?= docker/docker-compose-local.yml
-COMPOSE_PROJECT_NAME ?= {{cookiecutter.project_slug}}
-
-POETRY_VERSION = 1.1.11
 POETRY ?= poetry
-
-DOTENV_BASE_FILE ?= .env-base
-DOTENV_LOCAL_FILE ?= .env
-
 POETRY_INSTALLER_URL ?= https://install.python-poetry.org
 
--include $(DOTENV_BASE_FILE)
--include $(DOTENV_LOCAL_FILE)
 
 .PHONY: install-poetry
 install-poetry:
@@ -45,23 +35,6 @@ lock-packages:
 .PHONY: update-packages
 update-packages:
 	$(POETRY) update -vv
-
-.PHONY: docker-up
-docker-up:
-	docker-compose up -d
-	docker-compose ps
-
-.PHONY: docker-down
-docker-down:
-	docker-compose stop
-
-.PHONY: docker-logs
-docker-logs:
-	docker-compose logs --follow
-
-.PHONY: docker-ps
-docker-ps:
-	docker-compose ps
 
 .PHONY: lint-black
 lint-black:
