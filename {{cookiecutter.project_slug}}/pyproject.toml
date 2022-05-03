@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "{{cookiecutter.pkg_name}}"
+name = "{{cookiecutter.project_slug}}"
 version = "0.1.dev0"
 description = "{{cookiecutter.project_name}}"
 authors = [
@@ -18,7 +18,7 @@ classifiers = [
 readme = "README.md"
 #homepage = ""
 #repository = ""
-include = ["{{cookiecutter.project_slug}}/py.typed"]
+include = ["{{cookiecutter.pkg_name}}/py.typed"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
