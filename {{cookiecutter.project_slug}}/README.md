@@ -14,9 +14,16 @@
 
 ## Developers
 
-After cloning the {{cookiecutter.project_slug}} repository, set up a virtual
-environment and install dependencies by running the following command in the
-root folder.
+Clone the project repository, set up a virtual environment, and install
+dependencies.
+
+Use your IDE (e.g. PyCharm) to open the project repository. Create a
+Poetry virtual environment, and then update packages.
+
+    $ make update-packages
+
+Alternatively, use the ``make install`` command to create a dedicated
+Python virtual environment for this project.
 
     $ make install
 
