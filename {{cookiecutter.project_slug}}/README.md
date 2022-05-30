@@ -27,6 +27,9 @@ It will help to make sure Poetry's bin directory is in your `PATH` environment v
 But in any case, make sure you know the path to the `poetry` executable. The Poetry
 installer tells you where it has been installed, and how to configure your shell.
 
+Please refer to the [Poetry docs](https://python-poetry.org/docs/) for guidance on
+using Poetry.
+
 ### Setup for PyCharm users
 
 You can easily obtain the project files using PyCharm (menu "Git > Clone...").
@@ -111,6 +114,3 @@ Edit package dependencies in `pyproject.toml`. Update installed packages (and th
 `poetry.lock` file) using the following command.
 
     $ make update-packages
-
-Please refer to the [Poetry docs](https://python-poetry.org/docs/) for guidance on
-using Poetry.

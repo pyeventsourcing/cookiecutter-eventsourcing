@@ -65,6 +65,15 @@ Check if you have [Poetry](https://python-poetry.org) installed.
 
 If you don't have Poetry installed, then [install Poetry](https://python-poetry.org/docs/#installing-with-the-official-installer).
 
+It will help to make sure Poetry's bin directory is in your `PATH` environment variable.
+
+But in any case, make sure you know the path to the `poetry` executable. The Poetry
+installer tells you where it has been installed, and how to configure your shell.
+
+Please refer to the [Poetry docs](https://python-poetry.org/docs/) for guidance on
+using Poetry.
+
+
 ## Create project virtual environment
 
 Create a Python virtual environment for your project, either using PyCharm
