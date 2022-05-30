@@ -1,17 +1,24 @@
 .EXPORT_ALL_VARIABLES:
 
+PYTHON3 ?= python3
 POETRY ?= poetry
 POETRY_INSTALLER_URL ?= https://install.python-poetry.org
 
-
 .PHONY: install-poetry
 install-poetry:
-	curl -sSL $(POETRY_INSTALLER_URL) | python3
-	$(POETRY) --version
+	curl -sSL $(POETRY_INSTALLER_URL) | $(PYTHON3)
+
+.PHONY: uninstall-poetry
+uninstall-poetry:
+	curl -sSL $(POETRY_INSTALLER_URL) | $(PYTHON3) - --uninstall
 
 .PHONY: install-packages
 install-packages:
+	$(POETRY) --version
 	$(POETRY) install -vv $(opts)
+
+.PHONY: install
+install: install-packages
 
 .PHONY: install-pre-commit-hooks
 install-pre-commit-hooks:
@@ -24,9 +31,6 @@ uninstall-pre-commit-hooks:
 ifeq ($(opts),)
 	$(POETRY) run pre-commit uninstall
 endif
-
-.PHONY: install
-install: install-poetry install-packages
 
 .PHONY: lock-packages
 lock-packages:
