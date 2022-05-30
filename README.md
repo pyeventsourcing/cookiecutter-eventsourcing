@@ -15,11 +15,13 @@ Install Cookiecutter into the Python virtual environment.
 
 ## Create new project from template
 
-Create a new Python eventsourcing project using the Cookiecutter template for Python eventsourcing projects.
-Project a name for your new project, and adjust the project slug and the package name according to your
-preferences. By default, the given project name will be lower-cased and hyphentated to create a default
-for the project slug, and hypens in the project slug will be replaced by underscores to create a default
-for the package name.
+Use Cookiecutter to create a new Python eventsourcing project. You will be prompted for template values.
+
+    $ ./cookiecutter-venv/bin/cookiecutter gh:pyeventsourcing/cookiecutter-eventsourcing
+
+Choose a name for your new project. By default, the given project name will be lower-cased and hyphenated
+to create a default project slug. Hyphens in the project slug will be replaced by underscores to create a
+default package name. Adjust the project slug and the package name according to your preferences. 
 
     $ ./cookiecutter-venv/bin/cookiecutter gh:pyeventsourcing/cookiecutter-eventsourcing
     project_name [My New Project]:
@@ -63,7 +65,9 @@ Check if you have [Poetry](https://python-poetry.org) installed.
 
 If you don't have Poetry installed, then [install Poetry](https://python-poetry.org/docs/#installing-with-the-official-installer).
 
-Next, create a Python virtual environment for your project either using PyCharm
+## Create project virtual environment
+
+Create a Python virtual environment for your project, either using PyCharm
 or from the command line.
 
 ### Create project virtual environment using PyCharm
@@ -118,7 +122,7 @@ issues (don't know why) which might be problematic. If you encounter such
 issues, you can resolve these issues by deleting the virtual environment
 and creating the Poetry virtual environment using PyCharm (see above).
 
-### Project Makefile commands
+## Getting started
 
 The template for Python eventsourcing projects includes a small example
 of an event-sourced application. It has an event-sourced aggregate and a
