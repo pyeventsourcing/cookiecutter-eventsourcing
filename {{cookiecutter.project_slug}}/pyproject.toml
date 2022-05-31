@@ -22,7 +22,7 @@ include = ["{{cookiecutter.pkg_name}}/py.typed"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
-eventsourcing = { version = "~9.2.3" }
+eventsourcing = { version = "~9.2.14" }
 
 [tool.poetry.dev-dependencies]
 black = { version = "*", allow-prereleases = true }
