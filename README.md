@@ -25,8 +25,8 @@ default package name. Adjust the project slug and the package name according to 
 
     $ ./cookiecutter-venv/bin/cookiecutter gh:pyeventsourcing/cookiecutter-eventsourcing
     project_name [My New Project]:
-    project_slug [my-project]:
-    pkg_name [my_project]:
+    project_slug [my-new-project]:
+    pkg_name [my_new_project]:
     author_fullname [Author Name]:
     author_email [example@example.com]:
 
