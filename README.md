@@ -17,13 +17,13 @@ Install Cookiecutter into the Python virtual environment.
 
 Use Cookiecutter to create a new Python eventsourcing project. You will be prompted for template values.
 
-    $ ./cookiecutter-venv/bin/cookiecutter gh:pyeventsourcing/cookiecutter-eventsourcing
+    $ ~/.cookiecutter-venv/bin/cookiecutter gh:pyeventsourcing/cookiecutter-eventsourcing
 
 Choose a name for your new project. By default, the given project name will be lower-cased and hyphenated
 to create a default project slug. Hyphens in the project slug will be replaced by underscores to create a
 default package name. Adjust the project slug and the package name according to your preferences. 
 
-    $ ./cookiecutter-venv/bin/cookiecutter gh:pyeventsourcing/cookiecutter-eventsourcing
+    $ ~/.cookiecutter-venv/bin/cookiecutter gh:pyeventsourcing/cookiecutter-eventsourcing
     project_name [My New Project]:
     project_slug [my-new-project]:
     pkg_name [my_new_project]:
