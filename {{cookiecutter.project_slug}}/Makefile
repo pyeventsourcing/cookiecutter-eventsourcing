@@ -15,10 +15,11 @@ uninstall-poetry:
 .PHONY: install-packages
 install-packages:
 	$(POETRY) --version
-	$(POETRY) install -vv $(opts)
+	$(POETRY) install --no-root -vv $(opts)
 
 .PHONY: install
-install: install-packages
+	$(POETRY) --version
+	$(POETRY) install -vv $(opts)
 
 .PHONY: install-pre-commit-hooks
 install-pre-commit-hooks:
