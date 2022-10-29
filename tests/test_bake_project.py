@@ -74,29 +74,17 @@ def project_info(result):
     return project_path, project_slug, project_dir
 
 
-def test_bake_with_defaults(cookies):
+def test_bake_then_make(cookies):
     with bake_in_temp_dir(cookies) as result:
-
         print("Baked project path:", result.project_path)
-
-        assert os.path.exists(result.project_path / result.context['pkg_name'])
-        assert os.path.exists(result.project_path / result.context['pkg_name'] / '__init__.py')
-        assert os.path.exists(result.project_path / result.context['pkg_name'] / 'application.py')
-        assert os.path.exists(result.project_path / result.context['pkg_name'] / 'domainmodel.py')
-        assert os.path.exists(result.project_path / 'tests')
-        assert os.path.exists(result.project_path / 'tests' / '__init__.py')
-        assert os.path.exists(result.project_path / 'tests' / 'test_application.py')
-        assert os.path.exists(result.project_path / 'pyproject.toml')
-        assert os.path.exists(result.project_path / 'pytest.ini')
-        assert os.path.exists(result.project_path / 'mypy.ini')
-        assert os.path.exists(result.project_path / '.flake8')
-        assert os.path.exists(result.project_path / '.editorconfig')
-        assert os.path.exists(result.project_path / 'Makefile')
 
         check_call_inside_dir('make install-packages', str(result.project_path))
         check_call_inside_dir('make lint', str(result.project_path))
         check_call_inside_dir('make test', str(result.project_path))
-
+        check_call_inside_dir('make build', str(result.project_path))
+        check_call_inside_dir('make update-packages', str(result.project_path))
+        check_call_inside_dir('make lock-packages', str(result.project_path))
+        check_call_inside_dir('make fmt', str(result.project_path))
         check_call_inside_dir('make install', str(result.project_path))
         check_call_inside_dir('make lint', str(result.project_path))
         check_call_inside_dir('make test', str(result.project_path))
