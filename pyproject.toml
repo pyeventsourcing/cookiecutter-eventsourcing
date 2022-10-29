@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "cookiecutter-eventsourcing"
+version = "0.1.0"
+description = ""
+authors = ["John Bywater <john.bywater@appropriatesoftware.net>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+cookiecutter = "*"
+
+[tool.poetry.dev-dependencies]
+pytest = "*"
+pytest-cookies = "*"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
