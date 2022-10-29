@@ -18,6 +18,7 @@ install-packages:
 	$(POETRY) install --no-root -vv $(opts)
 
 .PHONY: install
+install:
 	$(POETRY) --version
 	$(POETRY) install -vv $(opts)
 
