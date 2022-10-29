@@ -23,6 +23,7 @@ def inside_dir(dirpath):
 def bake_in_temp_dir(cookies, *args, **kwargs):
     """
     Delete the temporal directory that is created when executing the tests
+
     :param cookies: pytest_cookies.Cookies,
         cookie to be baked and its temporal files will be removed
     """
@@ -38,20 +39,31 @@ def bake_in_temp_dir(cookies, *args, **kwargs):
         rmtree(str(result.project_path))
 
 
-def run_inside_dir(command, dirpath):
+def check_call_inside_dir(command, dirpath):
     """
     Run a command from inside a given directory, returning the exit status
     :param command: Command that will be executed
     :param dirpath: String, path of the directory the command is being run.
     """
     with inside_dir(dirpath):
-        return subprocess.check_call(shlex.split(command))
+        return subprocess.check_call(shlex.split(command), env=adjust_env_vars(dirpath))
 
 
 def check_output_inside_dir(command, dirpath):
     "Run a command from inside a given directory, returning the command output"
     with inside_dir(dirpath):
-        return subprocess.check_output(shlex.split(command))
+        return subprocess.check_output(shlex.split(command), env=adjust_env_vars(dirpath))
+
+
+def adjust_env_vars(dirpath):
+    env = os.environ.copy()
+    if "VIRTUAL_ENV" in env:
+        virtual_env_path = env.pop("VIRTUAL_ENV")
+        print("Removed 'VIRTUAL_ENV' from env:", virtual_env_path)
+    poetry_virtualenvs_path = os.path.abspath(os.path.join(dirpath, "..", ".venvs"))
+    env["POETRY_VIRTUALENVS_PATH"] = poetry_virtualenvs_path
+    print("Set 'POETRY_VIRTUALENVS_PATH' in env:", poetry_virtualenvs_path)
+    return env
 
 
 def project_info(result):
@@ -64,6 +76,8 @@ def project_info(result):
 
 def test_bake_with_defaults(cookies):
     with bake_in_temp_dir(cookies) as result:
+
+        print("Baked project path:", result.project_path)
 
         assert os.path.exists(result.project_path / result.context['pkg_name'])
         assert os.path.exists(result.project_path / result.context['pkg_name'] / '__init__.py')
@@ -79,6 +93,10 @@ def test_bake_with_defaults(cookies):
         assert os.path.exists(result.project_path / '.editorconfig')
         assert os.path.exists(result.project_path / 'Makefile')
 
-        run_inside_dir('make install', str(result.project_path))
-        run_inside_dir('make lint', str(result.project_path))
-        run_inside_dir('make test', str(result.project_path))
+        check_call_inside_dir('make install-packages', str(result.project_path))
+        check_call_inside_dir('make lint', str(result.project_path))
+        check_call_inside_dir('make test', str(result.project_path))
+
+        check_call_inside_dir('make install', str(result.project_path))
+        check_call_inside_dir('make lint', str(result.project_path))
+        check_call_inside_dir('make test', str(result.project_path))
